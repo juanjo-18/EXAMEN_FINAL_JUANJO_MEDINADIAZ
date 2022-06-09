@@ -1,5 +1,6 @@
 package clases;
 
+import excepciones.ValorInvalidoPeligrosidadException;
 import Herencia.ObjetoConAtributos;
 
 /**
@@ -15,8 +16,11 @@ public class Preso extends ObjetoConAtributos{
 	
 	
 
-	public Preso(String dni, String nombre, String apellidos, String mote, byte peligrosidad) {
+	public Preso(String dni, String nombre, String apellidos, String mote, byte peligrosidad) throws ValorInvalidoPeligrosidadException {
 		super(dni, nombre, apellidos);
+		if (this.peligrosidadValida(peligrosidad)==false) {
+			throw new ValorInvalidoPeligrosidadException("La peligrosidad es incorrecta tiene que estar entre 1 y 10");
+		}
 		this.mote = mote;
 		this.peligrosidad = peligrosidad;
 	}
@@ -70,7 +74,18 @@ public class Preso extends ObjetoConAtributos{
 	 * Setter de peligrosidad del preso. DEBE SER UN NUMERO ENTRE 1 y 10.
 	 * @param peligrosidad es el nivel de peligrosidad del preso. DEBE SER UN NUMERO ENTRE 1 y 10. 1 es muy poco peligroso, 10 es muy peligroso.
 	 */
-	public void setPeligrosidad(byte peligrosidad) {
+	public boolean peligrosidadValida(byte peligrosidad) {
+		if(peligrosidad<1 && peligrosidad>10) {
+			return false;
+		}else {
+			return true;
+		}
+		 
+	}
+	public void setPeligrosidad(byte peligrosidad) throws ValorInvalidoPeligrosidadException {
+		if (this.peligrosidadValida(peligrosidad)==false) {
+			throw new ValorInvalidoPeligrosidadException("La peligrosidad es incorrecta tiene que estar entre 1 y 10");
+		}
 		this.peligrosidad = peligrosidad;
 	}
 
