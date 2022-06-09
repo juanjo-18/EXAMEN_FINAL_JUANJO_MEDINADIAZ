@@ -24,7 +24,12 @@ public class PantallaEjercicio5  extends JPanel{
 	private Ventana ventana;
 	public PantallaEjercicio5(Ventana v) {
 		TreeSet<Preso> presos = new TreeSet<Preso>();
-		
+		try {
+			Preso preso1=new Preso();
+		} catch (ValorInvalidoPeligrosidadException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		Statement smt = UtilsDB.conectarBD();
 		try {
 			ResultSet cursor = smt.executeQuery("select * from preso ");

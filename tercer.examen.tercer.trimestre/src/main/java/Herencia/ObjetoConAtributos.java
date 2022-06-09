@@ -5,6 +5,9 @@ public class ObjetoConAtributos {
 	private String nombre;
 	private String apellidos;
 	
+	public ObjetoConAtributos() {
+		
+	}
 	public ObjetoConAtributos(String dni, String nombre, String apellidos) {
 		super();
 		this.dni = dni;
@@ -38,6 +41,6 @@ public class ObjetoConAtributos {
 
 	@Override
 	public String toString() {
-		return "ObjetoConAtributos [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + "]";
+		return "dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos ;
 	}
 }
