@@ -2,6 +2,8 @@ package interfacesgraficas;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 
 /**
  * Clase que hereda de JFrame, y que contendrá a las pantallas (Herederas de JPanel) del programa.
@@ -10,7 +12,7 @@ import javax.swing.JFrame;
  *
  */
 public class Ventana extends JFrame{
-	
+	private JPanel pantallaActual;
 	
 	/**
 	 * Constructor de Ventana, que inicializa su tamaño, título e icono, y otras propiedades.
@@ -22,6 +24,9 @@ public class Ventana extends JFrame{
 		this.setResizable(false);
 		this.setTitle("El último examen del año (o el penúltimo si suspendes)");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		this.pantallaActual=new PantallaEjercicio5(this);
+		this.setContentPane(pantallaActual);
 		
 		this.setVisible(true);
 		
